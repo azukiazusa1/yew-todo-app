@@ -1,5 +1,3 @@
-use std::sync::RwLock;
-
 use yew::prelude::*;
 use components::header::Header;
 use components::todo::todo_list::TodoList;
