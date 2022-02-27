@@ -1,4 +1,4 @@
-use yew::{Callback, InputEvent, Properties, function_component, html, Html, use_state};
+use yew::{Callback, InputEvent, MouseEvent, Properties, function_component, html, Html, use_state};
 
 #[derive(Properties, PartialEq)]
 pub struct TodoFormProps {
@@ -27,7 +27,8 @@ pub fn todo_item(props: &TodoFormProps) -> Html {
   let onclick = {
     let on_add = props.on_add.clone();
     let title = title.clone();
-    Callback::from(move |_| {
+    Callback::from(move |e: MouseEvent| {
+      e.prevent_default();
       title.set("".to_string());
       on_add.emit((*title).clone());
     })
